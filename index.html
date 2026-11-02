@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DirectLauncher - O Launcher Leve para Minecraft</title>
-    <!-- Google Fonts & FontAwesome para ícones -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -33,7 +32,6 @@
             flex-direction: column;
         }
 
-        /* Cabeçalho / Navbar */
         header {
             background-color: var(--bg-secondary);
             padding: 20px 40px;
@@ -52,9 +50,11 @@
             gap: 12px;
         }
 
-        .logo-container i {
-            font-size: 28px;
-            color: var(--accent-blue);
+        /* Estilo para a imagem da Logo */
+        .logo-container img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
         }
 
         .logo-text {
@@ -100,7 +100,6 @@
             color: #fff;
         }
 
-        /* Conteúdo Principal */
         main {
             flex: 1;
             display: flex;
@@ -130,7 +129,6 @@
             line-height: 1.6;
         }
 
-        /* Seção de Espelhos de Download */
         .download-section {
             background-color: var(--bg-secondary);
             padding: 40px;
@@ -179,7 +177,6 @@
             font-size: 20px;
         }
 
-        /* Rodapé */
         footer {
             background-color: var(--bg-secondary);
             text-align: center;
@@ -189,7 +186,6 @@
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* Responsividade */
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
@@ -208,46 +204,43 @@
 </head>
 <body>
 
-    <!-- Cabeçalho -->
     <header>
         <div class="logo-container">
-            <i class="fa-solid fa-cube"></i>
+            <!-- COLOQUE AQUI O LINK DA SUA IMAGEM DA LOGO (ex: logo.png) -->
+            <img src="logo.png" alt="Logo DirectLauncher">
             <div class="logo-text">Direct<span>Launcher</span></div>
         </div>
         <nav>
             <a href="#download" class="nav-btn primary">Download</a>
-            <button class="nav-btn" onclick="alert('Ajuda: DirectLauncher é leve e otimizado para Minecraft Java Edition (focado em versões modded como a 1.7.10). Basta baixar e executar!')">Ajuda</button>
+            <button class="nav-btn" onclick="alert('Ajuda: DirectLauncher é leve e otimizado para Minecraft Java Edition (focado em versões modded como a 1.7.10).')">Ajuda</button>
             <button class="nav-btn" onclick="alert('Versão atual: v1.0.0 (Estável)')">Versão Direct</button>
-            <button class="nav-btn" onclick="alert('Em breve mais novidades sobre o projeto!')">Comunidade</button>
+            <button class="nav-btn" onclick="alert('Comunidade DirectLauncher!')">Comunidade</button>
         </nav>
     </header>
 
-    <!-- Conteúdo Principal -->
     <main>
         <h1>Jogue Minecraft Java com <span>Máximo Desempenho</span></h1>
         <p class="subtitle">O DirectLauncher é o launcher definitivo, leve e prático, ideal para rodar versões modded (como a clássica 1.7.10) sem travamentos ou complicações.</p>
 
-        <!-- Seção de Downloads -->
         <div class="download-section" id="download">
             <h2>Escolha um Servidor para Baixar</h2>
             <div class="mirrors-grid">
-                <!-- GitHub -->
-                <a href="https://github.com/SEU-USUARIO/SEU-REPOSITORIO/releases" target="_blank" class="mirror-btn">
+                <!-- LINK DO GITHUB -->
+                <a href="SEU-LINK-DO-GITHUB-AQUI" target="_blank" class="mirror-btn">
                     <i class="fa-brands fa-github"></i> GitHub
                 </a>
-                <!-- MediaFire -->
-                <a href="https://www.mediafire.com/SEU-LINK" target="_blank" class="mirror-btn">
+                <!-- LINK DO MEDIAFIRE -->
+                <a href="SEU-LINK-DO-MEDIAFIRE-AQUI" target="_blank" class="mirror-btn">
                     <i class="fa-solid fa-cloud-arrow-down"></i> MediaFire
                 </a>
-                <!-- Google Drive -->
-                <a href="https://drive.google.com/SEU-LINK" target="_blank" class="mirror-btn">
+                <!-- LINK DO GOOGLE DRIVE -->
+                <a href="SEU-LINK-DO-GOOGLE-DRIVE-AQUI" target="_blank" class="mirror-btn">
                     <i class="fa-brands fa-google-drive"></i> Google Drive
                 </a>
             </div>
         </div>
     </main>
 
-    <!-- Rodapé -->
     <footer>
         <p>&copy; 2026 DirectLauncher. Todos os direitos reservados. Não anexo à Mojang AB.</p>
     </footer>
