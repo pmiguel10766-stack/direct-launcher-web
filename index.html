@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DirectLauncher - O Launcher Leve para Minecraft</title>
+    <!-- Google Fonts & FontAwesome para ícones -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #131c31;
+            --accent-blue: #0066ff;
+            --accent-blue-hover: #0052cc;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Cabeçalho / Navbar */
+        header {
+            background-color: var(--bg-secondary);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid rgba(0, 102, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-container i {
+            font-size: 28px;
+            color: var(--accent-blue);
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-text span {
+            color: var(--accent-blue);
+        }
+
+        nav {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-main);
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .nav-btn:hover {
+            background: rgba(0, 102, 255, 0.15);
+            color: var(--accent-blue);
+        }
+
+        .nav-btn.primary {
+            background-color: var(--accent-blue);
+        }
+
+        .nav-btn.primary:hover {
+            background-color: var(--accent-blue-hover);
+            color: #fff;
+        }
+
+        /* Conteúdo Principal */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        h1 span {
+            color: var(--accent-blue);
+        }
+
+        p.subtitle {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        /* Seção de Espelhos de Download */
+        .download-section {
+            background-color: var(--bg-secondary);
+            padding: 40px;
+            border-radius: 16px;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 102, 255, 0.2);
+        }
+
+        .download-section h2 {
+            font-size: 22px;
+            margin-bottom: 25px;
+            color: var(--text-main);
+        }
+
+        .mirrors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .mirror-btn {
+            background-color: var(--bg-primary);
+            border: 2px solid var(--accent-blue);
+            color: var(--text-main);
+            padding: 15px 20px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .mirror-btn:hover {
+            background-color: var(--accent-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 102, 255, 0.4);
+        }
+
+        .mirror-btn i {
+            font-size: 20px;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: var(--bg-secondary);
+            text-align: center;
+            padding: 20px;
+            color: var(--text-muted);
+            font-size: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+            }
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div class="logo-container">
+            <i class="fa-solid fa-cube"></i>
+            <div class="logo-text">Direct<span>Launcher</span></div>
+        </div>
+        <nav>
+            <a href="#download" class="nav-btn primary">Download</a>
+            <button class="nav-btn" onclick="alert('Ajuda: DirectLauncher é leve e otimizado para Minecraft Java Edition (focado em versões modded como a 1.7.10). Basta baixar e executar!')">Ajuda</button>
+            <button class="nav-btn" onclick="alert('Versão atual: v1.0.0 (Estável)')">Versão Direct</button>
+            <button class="nav-btn" onclick="alert('Em breve mais novidades sobre o projeto!')">Comunidade</button>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main>
+        <h1>Jogue Minecraft Java com <span>Máximo Desempenho</span></h1>
+        <p class="subtitle">O DirectLauncher é o launcher definitivo, leve e prático, ideal para rodar versões modded (como a clássica 1.7.10) sem travamentos ou complicações.</p>
+
+        <!-- Seção de Downloads -->
+        <div class="download-section" id="download">
+            <h2>Escolha um Servidor para Baixar</h2>
+            <div class="mirrors-grid">
+                <!-- GitHub -->
+                <a href="https://github.com/SEU-USUARIO/SEU-REPOSITORIO/releases" target="_blank" class="mirror-btn">
+                    <i class="fa-brands fa-github"></i> GitHub
+                </a>
+                <!-- MediaFire -->
+                <a href="https://www.mediafire.com/SEU-LINK" target="_blank" class="mirror-btn">
+                    <i class="fa-solid fa-cloud-arrow-down"></i> MediaFire
+                </a>
+                <!-- Google Drive -->
+                <a href="https://drive.google.com/SEU-LINK" target="_blank" class="mirror-btn">
+                    <i class="fa-brands fa-google-drive"></i> Google Drive
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2026 DirectLauncher. Todos os direitos reservados. Não anexo à Mojang AB.</p>
+    </footer>
+
+</body>
+</html>
