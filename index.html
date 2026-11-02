@@ -20,6 +20,7 @@
             --accent-glow: rgba(0, 102, 255, 0.45);
             --pix: #32bcad;
             --pix-glow: rgba(50, 188, 173, 0.45);
+            --danger: #f87171;
             --text-main: #ffffff;
             --text-muted: #94a3b8;
         }
@@ -104,6 +105,9 @@
         .nav-btn.pix { color: var(--pix); font-weight: 600; }
         .nav-btn.pix:hover { background: rgba(50, 188, 173, 0.12); color: #fff; }
 
+        .nav-btn.apk { opacity: 0.55; cursor: not-allowed; }
+        .nav-btn.apk:hover { color: var(--text-muted); background: transparent; }
+
         /* HERO */
         .hero {
             max-width: 900px; margin: 0 auto;
@@ -150,6 +154,22 @@
         .btn-main:hover { transform: translateY(-3px); box-shadow: 0 12px 36px var(--accent-glow); }
         .btn-ghost { color: #fff; background: var(--card); border: 1px solid var(--card-border); }
         .btn-ghost:hover { background: rgba(255,255,255,0.09); transform: translateY(-3px); }
+
+        /* Botão APK desativado (Hero) */
+        .btn-apk-disabled {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 15px 30px; border-radius: 12px;
+            font-size: 16px; font-weight: 600;
+            color: var(--text-muted);
+            background: rgba(255,255,255,0.03);
+            border: 1px dashed rgba(148, 163, 184, 0.4);
+            cursor: not-allowed; user-select: none;
+        }
+        .btn-apk-disabled .tag {
+            font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 50px;
+            color: var(--danger); background: rgba(248, 113, 113, 0.12);
+            border: 1px solid rgba(248, 113, 113, 0.35);
+        }
 
         /* Estatísticas */
         .stats {
@@ -218,6 +238,15 @@
         }
         .mirror-btn:hover i { color: #fff; transform: scale(1.15); }
         .mirror-btn:hover small { color: #dbe8ff; }
+
+        /* Botão APK desativado (Downloads) */
+        .mirror-btn.disabled {
+            opacity: 0.55; cursor: not-allowed;
+            border-style: dashed; border-color: rgba(148, 163, 184, 0.4);
+            pointer-events: none; position: relative;
+        }
+        .mirror-btn.disabled i { color: var(--text-muted); }
+        .mirror-btn.disabled small { color: var(--danger); font-weight: 600; }
 
         /* Passos */
         .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px; counter-reset: step; }
@@ -333,6 +362,7 @@
             <button class="nav-btn" onclick="alert('Ajuda: DirectLauncher é leve e otimizado para Minecraft Java Edition (focado em versões modded como a 1.7.10).')">Ajuda</button>
             <button class="nav-btn" onclick="alert('Versão atual: v1.0.0 (Estável)')">Versão Direct</button>
             <button class="nav-btn" onclick="alert('Comunidade DirectLauncher!')">Comunidade</button>
+            <button class="nav-btn apk" onclick="apkIndisponivel()" title="Não disponível"><i class="fa-brands fa-android"></i> Baixar APK</button>
             <a href="#doacao" class="nav-btn pix"><i class="fa-solid fa-heart"></i> Doar</a>
             <a href="#download" class="nav-btn primary"><i class="fa-solid fa-download"></i> Download</a>
         </nav>
@@ -346,6 +376,9 @@
         <div class="hero-buttons">
             <a href="#download" class="btn-main"><i class="fa-solid fa-circle-down"></i> Baixar agora</a>
             <a href="#recursos" class="btn-ghost"><i class="fa-solid fa-star"></i> Ver recursos</a>
+            <div class="btn-apk-disabled" onclick="apkIndisponivel()" title="Não disponível">
+                <i class="fa-brands fa-android"></i> Baixar APK <span class="tag">Não disponível</span>
+            </div>
         </div>
 
         <div class="stats">
@@ -400,6 +433,10 @@
                 <a href="SEU-LINK-DO-GOOGLE-DRIVE-AQUI" target="_blank" class="mirror-btn">
                     <i class="fa-brands fa-google-drive"></i> Google Drive
                     <small>Alternativo</small>
+                </a>
+                <a class="mirror-btn disabled" aria-disabled="true">
+                    <i class="fa-brands fa-android"></i> Baixar APK
+                    <small>Não disponível</small>
                 </a>
             </div>
         </div>
@@ -463,6 +500,10 @@
 
         document.getElementById("pixKey").textContent = PIX_CHAVE;
         document.getElementById("pixOwner").textContent = "Titular: " + PIX_NOME;
+
+        function apkIndisponivel() {
+            alert("O download do APK não está disponível no momento. O DirectLauncher funciona apenas no Windows (PC).");
+        }
 
         function togglePix() {
             document.getElementById("pixBox").classList.toggle("show");
